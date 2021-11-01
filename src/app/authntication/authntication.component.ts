@@ -37,6 +37,7 @@ export class AuthnticationComponent implements OnInit, OnDestroy {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    // this.auth.user.unsubscribe();
     
   }
   ngOnDestroy(){

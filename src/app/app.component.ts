@@ -14,7 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   name?: string;
   address?: string;
-  imageURL?: string
+  imageURL?: string;
 
   constructor(private auth: AuthService, private profile: ProfileService){}
 
@@ -22,43 +22,41 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
     this.usersub = this.auth.user.subscribe(user =>{
-      this.isAuthenticated = !user ? false : true;
+      this.isAuthenticated = !!user; 
       console.log(!user);
       console.log(!!user);
 })
 
-this.profile.fetchData().subscribe(response => {
-  console.log(response)
-  const data = JSON.stringify(response);
-  console.log(data)
-  const data1 = JSON.parse(data);
-  console.log(data1.name)
-  this.name = data1.name;
-  this.address = data1.address;
-  this.imageURL = data1.imageURL;
-})  
+// this.profile.fetchData().subscribe(response => {
+//   console.log(response)
+//   const data = JSON.stringify(response);
+//   console.log(data)
+//   const data1 = JSON.parse(data);
+//   console.log(data1.name)
+//   this.name = data1.name;
+//   this.address = data1.address;
+//   this.imageURL = data1.imageURL;
+// })  
 
-
-
-  }
+}
   ngOnDestroy(){
     this.usersub?.unsubscribe();
   }
 
-  updateData(){
+  // updateData(){
 
-    this.profile.fetchData().subscribe(response => {
-      console.log(response)
-      const data = JSON.stringify(response);
-      console.log(data)
-      const data1 = JSON.parse(data);
-      console.log(data1.name)
-      this.name = data1.name;
-      this.address = data1.address;
-      this.imageURL = data1.imageURL;
-    })  
+  //   this.profile.fetchData().subscribe(response => {
+  //     console.log(response)
+  //     const data = JSON.stringify(response);
+  //     console.log(data)
+  //     const data1 = JSON.parse(data);
+  //     console.log(data1.name)
+  //     this.name = data1.name;
+  //     this.address = data1.address;
+  //     this.imageURL = data1.imageURL;
+  //   })  
     
-  }
+  // }
 
   logout(){
     this.isAuthenticated = false;

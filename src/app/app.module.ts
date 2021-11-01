@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileService } from './profile.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
